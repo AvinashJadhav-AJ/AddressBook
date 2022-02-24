@@ -14,7 +14,8 @@ public class AddressBook {
 					System.out.println("1.Adding New Contact");
 					System.out.println("2.Check Added Contact");
 					System.out.println("3.Edit Added Contact");
-					System.out.println("Enter your choice");
+					System.out.println("4.Delete Added Contact");
+					System.out.println("Enter your Choice");
 					choice = sc.nextInt();
 
 					switch (choice) {
@@ -39,9 +40,15 @@ public class AddressBook {
 								email);
 						array.add(contact);
 						break;
+						
 					case 2:
-						System.out.println(array);
-						break;
+						java.util.Iterator<Contact> iterator = array.iterator();
+						while (iterator.hasNext()) {
+							contact = iterator.next();
+							System.out.println(array);
+							break;
+						}
+						
 					case 3:
 						boolean found = false;
 						System.out.println("Enter first name of the person for update ");
@@ -51,8 +58,7 @@ public class AddressBook {
 
 						while (listIterator.hasNext()) {
 							contact = listIterator.next();
-
-							if (contact.getFirstName().equals(firstName1)) { // entering the condition if fname matches
+							if (contact.getFirstName().equals(firstName1)) {
 
 								System.out.print("Enter new first Name: ");
 								firstName1 = sc1.nextLine();
@@ -68,7 +74,7 @@ public class AddressBook {
 								zipcode = sc.nextInt();
 								System.out.print("Enter phone number: ");
 								phoneNo = sc1.nextLine();
-								System.out.print("Enter your Email ID: ");
+								System.out.print("Enter your email ID: ");
 								email = sc1.nextLine();
 								listIterator.set(new Contact(firstName1, lastName, address, city, zipcode, state,
 										phoneNo, email));
@@ -82,6 +88,26 @@ public class AddressBook {
 							System.out.println("Record is updated successfully");
 						}
 						break;
+
+					case 4:
+						found = false;
+						System.out.println("Enter first name of the person for delete ");
+						firstName1 = sc1.nextLine();
+						iterator = array.iterator();
+						while (iterator.hasNext()) {
+							contact = iterator.next();
+							if (contact.getFirstName().equals(firstName1)) {
+								iterator.remove();
+								found = true;
+							}
+						}
+						if (!found) {
+							System.out.println("Record not found");
+						} else {
+							System.out.println("Record is deleted successfully");
+						}
+						break;
+
 					default:
 						System.out.println("default");
 
