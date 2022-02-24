@@ -40,7 +40,7 @@ public class AddressBook {
 								email);
 						array.add(contact);
 						break;
-						
+				
 					case 2:
 						java.util.Iterator<Contact> iterator = array.iterator();
 						while (iterator.hasNext()) {
@@ -58,6 +58,7 @@ public class AddressBook {
 
 						while (listIterator.hasNext()) {
 							contact = listIterator.next();
+							
 							if (contact.getFirstName().equals(firstName1)) {
 
 								System.out.print("Enter new first Name: ");
@@ -101,6 +102,7 @@ public class AddressBook {
 								found = true;
 							}
 						}
+						
 						if (!found) {
 							System.out.println("Record not found");
 						} else {
@@ -116,5 +118,5 @@ public class AddressBook {
 				System.out.println("Invalid Choice!!");
 			}
 		}	
-	}
+	}	
 }
